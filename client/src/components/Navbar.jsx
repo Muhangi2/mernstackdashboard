@@ -11,14 +11,12 @@ import logo from "assets/me.jpg"
 import { AppBar, IconButton, InputBase, Toolbar } from '@mui/material'
 import { useTheme } from '@emotion/react'
 
-const Navbar = () => {
-    
+const Navbar = ({isSidebarOpen,setSidebarOpen}) => {
     const dispatch=useDispatch();
     const theme=useTheme();
-
   return (
     <AppBar 
-    sx={{
+        sx={{
         position:"static",
         background:"none",
         boxShadow:"none"
@@ -26,8 +24,8 @@ const Navbar = () => {
     >
   <Toolbar sx={{justifyContent:"space-between"}}>  
   {/* leftside */}
-<FlexBetween onClick={()=>console.log("open/close menu")}>
-    <IconButton>
+   <FlexBetween>
+    <IconButton onClick={()=>setSidebarOpen(!isSidebarOpen)}>
         <MenuIcon/>
     </IconButton>
     <FlexBetween 

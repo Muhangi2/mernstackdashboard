@@ -101,7 +101,7 @@ const navItems=[
 
 
 
-const SideBar = ({isNonMobile,isSidebarOpen,setSiderbarOpen,drawerWidth}) => {
+const SideBar = ({isNonMobile,isSidebarOpen,setSidebarOpen,drawerWidth}) => {
 
     const {pathname}=useLocation()
     const [active,setActive]=useState("");
@@ -116,8 +116,8 @@ const SideBar = ({isNonMobile,isSidebarOpen,setSiderbarOpen,drawerWidth}) => {
    {isSidebarOpen &&(
     <Drawer
     open={isSidebarOpen}
-    onClose={()=>setSiderbarOpen(false)}
-    variant='persistent'
+    onClose={()=>setSidebarOpen(false)}
+    variant='persistent' 
     anchor='left'
     sx={{
         width:drawerWidth,
@@ -139,7 +139,7 @@ const SideBar = ({isNonMobile,isSidebarOpen,setSiderbarOpen,drawerWidth}) => {
             FORWARDERS
         </Typography>
     </Box>
-    {isNonMobile && (<IconButton onClick={()=>setSiderbarOpen(!isSidebarOpen)} >
+    {isNonMobile && (<IconButton onClick={()=>setSidebarOpen(!isSidebarOpen)} >
          <ChevronLeft/>
     </IconButton>)}
   </FlexBetween>

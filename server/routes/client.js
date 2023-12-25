@@ -1,3 +1,8 @@
 import express from "express";
+import { getUser } from "../controllers/client.js";
 
-export const clientRoute=express.Router();
+ const clientRoute=express.Router();
+
+ clientRoute.get("/user/:id",getUser)
+
+  export default clientRoute 

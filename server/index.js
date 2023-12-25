@@ -5,10 +5,13 @@ import mongoose, { Mongoose } from "mongoose"
 import helmet from "helmet"
 import  morgan from "morgan"
 import bodyParser from "body-parser"
-import { clientRoute } from "./routes/client.js"
+import  clientRoute  from "./routes/client.js"
 import { salesRoute } from "./routes/sales.js"
 import { managementRoute } from "./routes/management.js"
 
+//insserting data into database
+import User from "./models/User.js"
+import { dataUser } from "./data/data.js"
 
 dotenv.config()
 const app =express();
@@ -33,4 +36,7 @@ const PORT=process.env.PORT||8000
 mongoose.connect(process.env.MONGODB_URL,{
     useNewUrlParser:true,
     useUnifiedTopology:true
-}).then(()=>{app.listen(PORT,()=>console.log(`Server Port:${PORT}`))}).catch((error)=>console.log(`${error} did not connect`))
+}).then(()=>{app.listen(PORT,()=>console.log(`Server Port:${PORT}`))
+//adding data once
+User.insertMany(dataUser)
+}).catch((error)=>console.log(`${error} did not connect`))
