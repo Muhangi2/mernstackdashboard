@@ -12,6 +12,7 @@ import { managementRoute } from "./routes/management.js"
 //insserting data into database
 import User from "./models/User.js"
 import { dataUser } from "./data/data.js"
+import generalRoute from "./routes/general.js"
 
 dotenv.config()
 const app =express();
@@ -25,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 // routes
-app.use("/clients",clientRoute)
+app.use("/general",generalRoute)
 app.use("/sales",salesRoute)
 app.use("/management",managementRoute)
 
@@ -35,8 +36,8 @@ const PORT=process.env.PORT||8000
 
 mongoose.connect(process.env.MONGODB_URL,{
     useNewUrlParser:true,
-    useUnifiedTopology:true
+   
 }).then(()=>{app.listen(PORT,()=>console.log(`Server Port:${PORT}`))
 //adding data once
-User.insertMany(dataUser)
+// User.insertMany(dataUser)
 }).catch((error)=>console.log(`${error} did not connect`))

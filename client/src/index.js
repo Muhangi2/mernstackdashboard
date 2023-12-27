@@ -5,13 +5,22 @@ import App from './App';
 import { configureStore } from '@reduxjs/toolkit';
 import globalReducer from "state"
 import { Provider } from 'react-redux';
+import {api} from "state/api.js"
+import { setupListeners } from '@reduxjs/toolkit/query';
 
+//configuring the redux setup 
 const store=configureStore({
   reducer:{
-    global:globalReducer
-  }
+    global:globalReducer,
+    [api.reducerPath]:api.reducer,
+  },
+  middleware:(getDefault)=>getDefault().concat(api.middleware),
 })
+setupListeners(store.dispatch);
 
+
+
+//initial start up of react app
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
