@@ -5,7 +5,7 @@ import mongoose, { Mongoose } from "mongoose"
 import helmet from "helmet"
 import  morgan from "morgan"
 import bodyParser from "body-parser"
-import  clientRoute  from "./routes/client.js"
+// import  clientRoute  from "./routes/client.js"
 import { salesRoute } from "./routes/sales.js"
 import { managementRoute } from "./routes/management.js"
 

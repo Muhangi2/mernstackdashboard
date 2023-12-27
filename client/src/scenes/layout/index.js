@@ -5,7 +5,6 @@ import { Outlet } from 'react-router-dom'
 import Navbar from 'components/Navbar'
 import SideBar from 'components/SideBar'
 import { useGetUserQuery } from 'state/api'
-import state from 'state'
 
 const Layout = () => {
     const isNonMobile=useMediaQuery("(min-width:600px)")
@@ -17,8 +16,8 @@ const Layout = () => {
   return (
     <Box display={isNonMobile ? "flex":"block"} width="100%" height="100%" >
         <SideBar user={data||{}} isNonMobile={isNonMobile} isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} drawerWidth="250px"/>
-     <Box>
-        {/* <Navbar  user={data||{}} isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen}/> */}
+     <Box flexGrow={1} >
+        <Navbar  user={data||{}} isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen}/>
         <Outlet/>
      </Box>
     </Box>

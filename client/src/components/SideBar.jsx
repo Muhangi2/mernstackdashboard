@@ -34,7 +34,7 @@ import { useLocation,useNavigate } from 'react-router-dom'
 import FlexBetween from './FlexBetween'
 import me from "assets/me.jpg"
 
-
+console.log(me)
 const navItems=[
     {
         texts:"Dashboard",
@@ -100,7 +100,6 @@ const navItems=[
 ]
 
 
-
 const SideBar = ({user,isNonMobile,isSidebarOpen,setSidebarOpen,drawerWidth,}) => {
 
     const {pathname}=useLocation()
@@ -121,12 +120,19 @@ const SideBar = ({user,isNonMobile,isSidebarOpen,setSidebarOpen,drawerWidth,}) =
     anchor='left'
     sx={{
         width:drawerWidth,
+        overflow: "auto",
         "& .MuiDrawer-paper":{
             color:theme.palette.secondary[200],
             backgroundColor:theme.palette.background.alt,
             boxSizing:"border-box",
             borderWidth:isNonMobile ? 0:"2px",
-            width:drawerWidth
+            width:drawerWidth,
+            overflow: "auto",
+            "&::-webkit-scrollbar": {
+              width: 0, // Hide scrollbar for Chrome, Safari, and Opera
+              display: "none", // Hide scrollbar for IE, Edge
+            },
+            scrollbarWidth: "none",
         }
     }}
     >
@@ -182,14 +188,17 @@ const SideBar = ({user,isNonMobile,isSidebarOpen,setSidebarOpen,drawerWidth,}) =
   </List>
 
     </Box>
-    <Box position="absolute" bottom="1rem">
+    <Box  bottom="1rem">
     <Divider/>
     <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
-        <Box alt="profileimage"
+        <Box  
+         component="img"
+          alt="profileimage"
           height="40px"
           width="40px"
           borderRadius="50%"
-          sx={{objectFit:"cover"}} src={me}
+          sx={{objectFit:"cover"}} 
+          src={me}
           />
         <Box textAlign="left"> 
           <Typography fontWeight="bold" fontSize="0.9rem" sx={{color:theme.palette.secondary[100]}}>

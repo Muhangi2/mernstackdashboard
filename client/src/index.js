@@ -19,7 +19,6 @@ const store=configureStore({
 setupListeners(store.dispatch);
 
 
-
 //initial start up of react app
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
