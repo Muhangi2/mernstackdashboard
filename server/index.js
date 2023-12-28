@@ -8,11 +8,14 @@ import bodyParser from "body-parser"
 // import  clientRoute  from "./routes/client.js"
 import { salesRoute } from "./routes/sales.js"
 import { managementRoute } from "./routes/management.js"
+import generalRoute from "./routes/general.js"
 
 //insserting data into database
-import User from "./models/User.js"
-import { dataUser } from "./data/data.js"
-import generalRoute from "./routes/general.js"
+import products from "./models/products.js"
+import productStats from "./models/productStats.js"
+import  {dataProduct, dataProductStat} from "./data/data.js"
+import clientRoute from "./routes/client.js"
+
 
 dotenv.config()
 const app =express();
@@ -26,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 // routes
+app.use("/client",clientRoute)
 app.use("/general",generalRoute)
 app.use("/sales",salesRoute)
 app.use("/management",managementRoute)
@@ -39,5 +43,6 @@ mongoose.connect(process.env.MONGODB_URL,{
    
 }).then(()=>{app.listen(PORT,()=>console.log(`Server Port:${PORT}`))
 //adding data once
-// User.insertMany(dataUser)
+// products.insertMany(dataProduct)
+// productStats.insertMany(dataProductStat)
 }).catch((error)=>console.log(`${error} did not connect`))
