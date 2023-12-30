@@ -1,3 +1,4 @@
+import User from "../models/User.js";
 import productStats from "../models/productStats.js";
 import products from "../models/products.js";
 
@@ -19,4 +20,13 @@ export const getProducts=async(req,res)=>{
     } catch (error) {
          res.status(400).json({message:error.message});
     }
+}
+export const getCustomers=async(req,res)=>{
+  try {
+   const customers=User.find({role:"user"}).select("-password");
+     res.status(200).json(customers);
+
+  } catch (error) {
+       res.status(400).json({message:error.message});
+  }
 }
