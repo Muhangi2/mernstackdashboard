@@ -26,13 +26,12 @@ export const getProducts=async(req,res)=>{
 }
 export const getCustomers=async(req,res)=>{
   try {
-    const customers = await User.find({ role: "user" }).select("-password");
-
+    const customers = await User.find({ role: "user" }).select("-password")
     res.status(200).json(customers);
     
 
   } catch (error) {
-       res.status(400).json({message:error.message});
+       res.status(500).json({message:error.message});
   }
 }
 export const getTransactions=async(req,res)=>{
@@ -57,11 +56,18 @@ export const getTransactions=async(req,res)=>{
     }).sort(sortFormatted).skip(page*pageSize).limit(pageSize)
     
 //counting the number of documents
-  const total=await transaction.countDocuments({
-  name:{$regex:search,$options:"i"},
-    })
+const total = await transaction.countDocuments({
+  $or: [
+    { name: { $regex: search, $options: "i" } },
+    // { userId: { $regex: search, $options: "i" } },
+    // Add more conditions as needed
+  ]
+});
+
   res.status(200).json({transactions,total})
   } catch (error) {
-    
+    res.status(200).json({
+      message:error.message
+    })
   }
 }

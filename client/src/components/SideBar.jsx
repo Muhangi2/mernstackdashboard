@@ -73,10 +73,6 @@ const navItems=[
         icon:<TodayOutlined/>
     },
     {
-        texts:"Daily",
-        icon:<TodayOutlined/>
-    },
-    {
         texts:"Monthly",
         icon:<CalendarMonthRounded/>
     },

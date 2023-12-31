@@ -14,7 +14,7 @@ import generalRoute from "./routes/general.js";
 // Inserting data into the database
 import products from "./models/products.js";
 import productStats from "./models/productStats.js";
-import { dataProduct, dataProductStat } from "./data/data.js";
+import { dataProduct, dataProductStat ,dataTransaction} from "./data/data.js";
 import clientRoute from "./routes/client.js";
 import transaction from "./models/transaction.js";
 
@@ -47,7 +47,7 @@ mongoose
     // Adding data once
     // products.insertMany(dataProduct);
     // productStats.insertMany(dataProductStat);
-    transaction.insertMany(dataTransaction)
+    // transaction.insertMany(dataTransaction)
   })
   .catch((error) => console.log(`${error} did not connect`));
 
