@@ -10,11 +10,14 @@ import Products from "scenes/products";
 import Customers from "scenes/customers";
 import Transactions from "scenes/transactions";
 import Geography from "scenes/geography";
+import OverView from "scenes/overview";
  
 
 function App() {
   const mode=useSelector((state)=>state.global.mode);
+
   const theme=useMemo(()=>createTheme(themeSettings(mode)),[mode])
+
   return (
     <div className="app">
     <BrowserRouter>
@@ -28,6 +31,7 @@ function App() {
             <Route  path="/customers" element={<Customers/>}/>
             <Route  path="/transactions" element={<Transactions/>}/>
             <Route  path="/geography" element={<Geography/>}/>
+            <Route  path="/Overview" element={<OverView/>}/>
         </Route>
       </Routes>
     </ThemeProvider>
