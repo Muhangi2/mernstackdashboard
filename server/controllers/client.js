@@ -3,6 +3,7 @@ import productStats from "../models/productStats.js";
 import products from "../models/products.js";
 import * as flatted from "flatted";
 import transaction from "../models/transaction.js";
+import getCountryIso3 from "country-iso-2-to-3"
 
 
 export const getProducts=async(req,res)=>{
@@ -69,5 +70,28 @@ const total = await transaction.countDocuments({
     res.status(200).json({
       message:error.message
     })
+  }
+}
+export const getGeography=async(req,res)=>{
+  try {
+    const users = await User.find();
+     const mappedlocations=users.reduce((acc,{country})=>{
+      const countryISO3=getCountryIso3(country);
+       
+      if(!acc[countryISO3]){
+        acc[countryISO3]=0;
+      }
+      acc[countryISO3]++;
+       return acc;
+     },{});
+     const formattedLocations=Object.entries(mappedlocations).map(([country,count])=>{
+      return {id:country,value:count};
+       }
+     );
+
+    res.status(200).json(formattedLocations);
+    
+  } catch (error) {
+       res.status(500).json({message:error.message});
   }
 }

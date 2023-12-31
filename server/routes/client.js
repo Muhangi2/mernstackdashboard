@@ -1,5 +1,5 @@
 import express from "express";
-import { getCustomers, getProducts, getTransactions } from "../controllers/client.js";
+import { getCustomers, getGeography, getProducts, getTransactions } from "../controllers/client.js";
 
 
  const  clientRoute=express.Router();
@@ -7,5 +7,6 @@ import { getCustomers, getProducts, getTransactions } from "../controllers/clien
  clientRoute.get("/product",getProducts)
  clientRoute.get("/customer",getCustomers)
  clientRoute.get("/transaction",getTransactions)
+ clientRoute.get("/geography",getGeography)
 
   export default  clientRoute

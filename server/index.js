@@ -14,9 +14,11 @@ import generalRoute from "./routes/general.js";
 // Inserting data into the database
 import products from "./models/products.js";
 import productStats from "./models/productStats.js";
-import { dataProduct, dataProductStat ,dataTransaction} from "./data/data.js";
+import { dataProduct, dataProductStat ,dataTransaction,dataOverallStat} from "./data/data.js";
 import clientRoute from "./routes/client.js";
 import transaction from "./models/transaction.js";
+import overallStat from "./models/overallStat.js";
+
 
 dotenv.config();
 
@@ -48,6 +50,7 @@ mongoose
     // products.insertMany(dataProduct);
     // productStats.insertMany(dataProductStat);
     // transaction.insertMany(dataTransaction)
+    // overallStat.insertMany(dataOverallStat)
   })
   .catch((error) => console.log(`${error} did not connect`));
 
