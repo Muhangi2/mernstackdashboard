@@ -110,11 +110,11 @@ const SideBar = ({user,isNonMobile,isSidebarOpen,setSidebarOpen,drawerWidth,}) =
     <Box component="nav">
        {isSidebarOpen &&(
         <Drawer
-    open={isSidebarOpen}
-    onClose={()=>setSidebarOpen(false)}
-    variant='persistent' 
-    anchor='left'
-    sx={{
+       open={isSidebarOpen}
+       onClose={()=>setSidebarOpen(false)}
+       variant='persistent' 
+       anchor='left'                                            
+      sx={{
         width:drawerWidth,
         overflow: "auto",
         "& .MuiDrawer-paper":{
