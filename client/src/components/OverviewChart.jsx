@@ -49,39 +49,6 @@ const OverviewChart = ({ isDashboard = false, view }) => {
   return (
     <ResponsiveLine
       data={view === "sales" ? totalSalesLine : totalUnitsLine}
-      theme={{
-        axis: {
-          domain: {
-            line: {
-              stroke: theme.palette.secondary[200],
-            },
-          },
-          legend: {
-            text: {
-              fill: theme.palette.secondary[200],
-            },
-          },
-          ticks: {
-            line: {
-              stroke: theme.palette.secondary[200],
-              strokeWidth: 1,
-            },
-            text: {
-              fill: theme.palette.secondary[200],
-            },
-          },
-        },
-        legends: {
-          text: {
-            fill: theme.palette.secondary[200],
-          },
-        },
-        tooltip: {
-          container: {
-            color: theme.palette.primary.main,
-          },
-        },
-      }}
       margin={{ top: 20, right: 50, bottom: 50, left: 70 }}
       xScale={{ type: "point" }}
       yScale={{
