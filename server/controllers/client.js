@@ -1,7 +1,6 @@
 import User from "../models/User.js";
 import productStats from "../models/productStats.js";
 import products from "../models/products.js";
-import * as flatted from "flatted";
 import transaction from "../models/transaction.js";
 import getCountryIso3 from "country-iso-2-to-3"
 
