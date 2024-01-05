@@ -14,28 +14,32 @@ const columns=[
       flex:1,
     },
     {
-      field:"name",
-      headerName:"Name",
-      flex:0.5,
-    },
-    {
-      field:"email",
-      headerName:"Email",
+      field:"userId",
+      headerName:"User ID",
       flex:1,
     },
     {
-      field:"phoneNumber",
-      headerName:"Phone Number",
+      field:"createdAt",
+      headerName:"CreatedAt",
+      flex:1,
+    },
+    {
+      field:"products",
+      headerName:"# of productss",
       flex:0.5,
-      renderCell: (params) => {
-        return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
-      }
-      
+      sortable:false,
+      renderCell:(params)=>params.value.length
+    },
+    {
+      field:"cost",
+      headerName:"Cost",
+      flex:0.5,
+      flex:1,
+      renderCell:(params)=>`$${Number(params.value).toFixed(2)}`
     }
   
   ]
   
-
 const Performance = () => {
     const userId=useSelector((state)=>state.global.userId)
     console.log(userId)
@@ -43,11 +47,11 @@ const Performance = () => {
     const theme=useTheme()
   
     console.log(data)
-
+   console.log(data.sales);
   return (
     <Box m="1.5rem 2.5rem" >
-      <Header title="Perfomance" subtitle="List of adminuser" />
-      {/* <Box mt="40px" height="200vh"
+      <Header title="Perfomance" subtitle="Performance of students" />
+      <Box mt="40px" height="200vh"
       sx={{
         "& .MuiDataGrid-root":{
           border:"none"
@@ -73,7 +77,7 @@ const Performance = () => {
         <DataGrid loading={isLoading || !data}
          getRowId={(row)=>row._id}
          columns={columns}
-         rows={data||[]}
+         rows={(data && data.sales)||[]}
          slots={{
             ColumnMenu:CustomColumnMenu,
          }}
@@ -81,7 +85,8 @@ const Performance = () => {
            
        
 
-      </Box> */}
+      </Box>
+
     </Box>
   )
 }

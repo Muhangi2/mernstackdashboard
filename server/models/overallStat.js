@@ -7,7 +7,11 @@ const overallStatSChema=new mongoose.Schema({
      yearlTotalSolidUnits:Number,
      year:Number,
      monthlyData:[
-         { month:String,totalSales:Number,totalUnits:Number}
+         { 
+            month:String,
+            totalSales:Number,
+            totalUnits:Number
+        }
      ],
      dailyData:[
          {
